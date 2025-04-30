@@ -34,7 +34,7 @@ const directoryListingPlugin = {
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/Notes/',
+  base: '/notes/',
   plugins: [react(), directoryListingPlugin],
   server: {
     fs: {

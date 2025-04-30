@@ -65,4 +65,4 @@ if (fs.existsSync(targetDir)) {
 // Copy all markdown files from the root directory
 copyDirectory(sourceDir, targetDir);
 
-console.log('Notes copied to public directory'); 
+console.log('notes copied to public directory'); 

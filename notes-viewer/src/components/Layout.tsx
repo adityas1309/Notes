@@ -249,7 +249,7 @@ const Layout: React.FC = () => {
         >
           {sidebarOpen ? <FiX size={20} /> : <FiMenu size={20} />}
         </button>
-        <h1 style={styles.title}>Notes Viewer</h1>
+        <h1 style={styles.title}>notes Viewer</h1>
         <div style={{ width: '1.5rem' }} />
       </header>
 
@@ -280,7 +280,7 @@ const Layout: React.FC = () => {
                         margin: 0,
                         flex: 1,
                         minWidth: 0
-                      }}>My Notes</h2>
+                      }}>My notes</h2>
                     </div>
                     <div style={styles.headerControls}>
                       <button

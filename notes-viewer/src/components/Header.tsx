@@ -43,7 +43,7 @@ const Header: React.FC<HeaderProps> = ({ sidebarOpen, onToggleSidebar }) => {
       >
         {sidebarOpen ? <FiX size={20} /> : <FiMenu size={20} />}
       </button>
-      <h1 style={styles.title}>Notes Viewer</h1>
+      <h1 style={styles.title}>notes Viewer</h1>
       <div style={{ width: '1.5rem' }} />
     </header>
   );

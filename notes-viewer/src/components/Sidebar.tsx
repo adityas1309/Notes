@@ -183,7 +183,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
                   whiteSpace: 'nowrap'
-                }}>My Notes</h2>
+                }}>My notes</h2>
               </div>
               <div style={styles.headerControls}>
                 <button
