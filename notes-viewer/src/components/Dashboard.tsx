@@ -45,22 +45,30 @@ const Dashboard: React.FC = () => {
       padding: '2rem',
       backgroundColor: 'var(--bg-color)',
       borderRadius: '0.5rem',
-      color: 'var(--text-color)'
+      color: 'var(--text-color)',
+      boxShadow: 'var(--shadow-sm)',
+      border: '1px solid var(--border-color)'
     },
     header: {
       display: 'flex',
       alignItems: 'center',
       gap: '0.75rem',
-      marginBottom: '2rem'
+      marginBottom: '2rem',
+      paddingBottom: '1rem',
+      borderBottom: '1px solid var(--border-color)'
     },
     headerIcon: {
       color: 'var(--link-color)',
-      fontSize: '1.5rem'
+      fontSize: '1.5rem',
+      backgroundColor: 'var(--hover-color)',
+      padding: '0.5rem',
+      borderRadius: '0.5rem'
     },
     headerTitle: {
       fontSize: '1.5rem',
       fontWeight: 600,
-      color: 'var(--text-color)'
+      color: 'var(--text-color)',
+      margin: 0
     },
     statsGrid: {
       display: 'grid',
@@ -69,35 +77,57 @@ const Dashboard: React.FC = () => {
       marginBottom: '2rem'
     },
     statCard: {
-      backgroundColor: 'var(--hover-color)',
+      backgroundColor: 'var(--card-bg)',
       padding: '1.5rem',
-      borderRadius: '0.5rem',
+      borderRadius: '0.75rem',
       display: 'flex',
       flexDirection: 'column' as const,
-      gap: '0.75rem'
+      gap: '0.75rem',
+      border: '1px solid var(--card-border)',
+      boxShadow: 'var(--shadow-sm)',
+      transition: 'all 0.2s ease-in-out',
+      '&:hover': {
+        boxShadow: 'var(--shadow-md)',
+        transform: 'translateY(-2px)'
+      }
     },
     statIcon: {
       fontSize: '1.5rem',
-      color: 'var(--link-color)'
+      color: 'var(--link-color)',
+      backgroundColor: 'var(--hover-color)',
+      padding: '0.5rem',
+      borderRadius: '0.5rem',
+      width: '2.5rem',
+      height: '2.5rem',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
     },
     statValue: {
       fontSize: '2rem',
       fontWeight: 600,
-      color: 'var(--text-color)'
+      color: 'var(--text-color)',
+      margin: '0.5rem 0'
     },
     statLabel: {
       color: 'var(--text-color)',
       opacity: 0.7,
-      fontSize: '0.875rem'
+      fontSize: '0.875rem',
+      fontWeight: 500
     },
     foldersSection: {
-      marginTop: '2rem'
+      marginTop: '2rem',
+      paddingTop: '2rem',
+      borderTop: '1px solid var(--border-color)'
     },
     foldersTitle: {
       fontSize: '1.25rem',
       fontWeight: 600,
-      marginBottom: '1rem',
-      color: 'var(--text-color)'
+      marginBottom: '1.5rem',
+      color: 'var(--text-color)',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '0.5rem'
     },
     foldersList: {
       display: 'grid',
@@ -105,21 +135,32 @@ const Dashboard: React.FC = () => {
       gap: '1rem'
     },
     folderItem: {
-      backgroundColor: 'var(--hover-color)',
+      backgroundColor: 'var(--card-bg)',
       padding: '1rem',
-      borderRadius: '0.5rem',
+      borderRadius: '0.75rem',
       display: 'flex',
       alignItems: 'center',
       gap: '0.75rem',
       color: 'var(--text-color)',
-      transition: 'all 0.2s',
+      transition: 'all 0.2s ease-in-out',
+      border: '1px solid var(--card-border)',
+      boxShadow: 'var(--shadow-sm)',
       '&:hover': {
-        backgroundColor: 'var(--hover-color)',
-        opacity: 0.8
+        boxShadow: 'var(--shadow-md)',
+        transform: 'translateY(-2px)',
+        backgroundColor: 'var(--hover-color)'
       }
     },
     folderIcon: {
-      color: 'var(--link-color)'
+      color: 'var(--link-color)',
+      backgroundColor: 'var(--hover-color)',
+      padding: '0.5rem',
+      borderRadius: '0.5rem',
+      width: '2rem',
+      height: '2rem',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
     }
   };
 

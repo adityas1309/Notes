@@ -33,47 +33,43 @@ const Sidebar: React.FC<SidebarProps> = ({
 
   const styles = {
     sidebar: {
-      position: 'fixed' as const,
       width: '280px',
       height: '100%',
       backgroundColor: 'var(--bg-color)',
       borderRight: '1px solid var(--border-color)',
-      overflowY: 'auto' as const,
-      overflowX: 'hidden' as const,
-      zIndex: 20,
-      top: '4rem',
-      left: 0,
-      boxSizing: 'border-box' as const
+      display: 'flex',
+      flexDirection: 'column' as const,
+      boxShadow: 'var(--shadow-sm)',
+      position: 'relative' as const,
+      zIndex: 10
     },
     sidebarContent: {
       flex: 1,
       display: 'flex',
       flexDirection: 'column' as const,
       overflow: 'hidden',
-      padding: '1rem',
-      width: '100%',
-      boxSizing: 'border-box' as const,
-      maxWidth: '320px'
+      padding: '0.5rem'
     },
     sidebarHeader: {
       padding: '1rem',
       borderBottom: '1px solid var(--border-color)',
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      marginBottom: '1rem',
-      width: '100%'
+      backgroundColor: 'var(--bg-color)',
+      position: 'sticky' as const,
+      top: 0,
+      zIndex: 1
     },
     headerTitle: {
       display: 'flex',
       alignItems: 'center',
       gap: '0.5rem',
       marginBottom: '1rem',
+      color: 'var(--text-color)'
     },
     headerControls: {
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
+      gap: '0.5rem'
     },
     iconButton: {
       background: 'none',
@@ -85,38 +81,59 @@ const Sidebar: React.FC<SidebarProps> = ({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
+      transition: 'all 0.2s ease-in-out',
       '&:hover': {
         backgroundColor: 'var(--hover-color)',
-      },
+        boxShadow: 'var(--shadow-sm)'
+      }
     },
     navigation: {
       padding: '1rem',
       borderBottom: '1px solid var(--border-color)',
-      display: 'flex',
-      flexDirection: 'column' as const,
-      gap: '0.5rem',
-      marginBottom: '1rem'
+      backgroundColor: 'var(--bg-color)',
+      position: 'sticky' as const,
+      top: '4.5rem',
+      zIndex: 1
     },
     navLink: (isActive: boolean) => ({
       display: 'flex',
       alignItems: 'center',
       gap: '0.75rem',
       padding: '0.75rem',
-      borderRadius: '0.375rem',
-      color: 'var(--text-color)',
+      borderRadius: '0.5rem',
+      color: isActive ? 'var(--link-color)' : 'var(--text-color)',
       textDecoration: 'none',
       backgroundColor: isActive ? 'var(--hover-color)' : 'transparent',
+      transition: 'all 0.2s ease-in-out',
       '&:hover': {
         backgroundColor: 'var(--hover-color)',
-      },
+        color: 'var(--link-color)',
+        boxShadow: 'var(--shadow-sm)'
+      }
     }),
     navIcon: {
-      color: 'var(--text-color)',
+      color: 'inherit',
+      flexShrink: 0,
+      width: '20px',
+      height: '20px'
     },
     fileTreeContainer: {
       flex: 1,
       overflow: 'auto',
-      padding: '1rem',
+      padding: '0.5rem',
+      '&::-webkit-scrollbar': {
+        width: '6px'
+      },
+      '&::-webkit-scrollbar-track': {
+        backgroundColor: 'transparent'
+      },
+      '&::-webkit-scrollbar-thumb': {
+        backgroundColor: 'var(--border-color)',
+        borderRadius: '3px',
+        '&:hover': {
+          backgroundColor: 'var(--hover-color)'
+        }
+      }
     },
     loadingContainer: {
       display: 'flex',
@@ -124,6 +141,7 @@ const Sidebar: React.FC<SidebarProps> = ({
       alignItems: 'center',
       justifyContent: 'center',
       padding: '2rem',
+      color: 'var(--text-color)'
     },
     loadingSpinner: {
       width: '2rem',
@@ -131,11 +149,12 @@ const Sidebar: React.FC<SidebarProps> = ({
       border: '3px solid var(--border-color)',
       borderTop: '3px solid var(--link-color)',
       borderRadius: '50%',
-      animation: 'spin 1s linear infinite',
+      animation: 'spin 1s linear infinite'
     },
     loadingText: {
       marginTop: '1rem',
       color: 'var(--text-color)',
+      opacity: 0.7
     },
     emptyState: {
       display: 'flex',
@@ -144,10 +163,13 @@ const Sidebar: React.FC<SidebarProps> = ({
       justifyContent: 'center',
       padding: '2rem',
       textAlign: 'center' as const,
+      color: 'var(--text-color)'
     },
     emptyStateIcon: {
       marginBottom: '1rem',
-    },
+      color: 'var(--text-color)',
+      opacity: 0.7
+    }
   };
 
   return (

@@ -18,7 +18,8 @@ const FileTree: React.FC<FileTreeProps> = ({ items, level = 0 }) => {
       display: 'flex',
       flexDirection: 'column' as const,
       gap: '0.25rem',
-      width: '100%'
+      width: '100%',
+      padding: '0.5rem'
     },
     listItem: {
       position: 'relative' as const,
@@ -31,12 +32,16 @@ const FileTree: React.FC<FileTreeProps> = ({ items, level = 0 }) => {
       textAlign: 'left' as const,
       padding: '0.5rem 0.75rem',
       borderRadius: '0.5rem',
-      transition: 'all 0.2s',
+      transition: 'all 0.2s ease-in-out',
       backgroundColor: isExpanded ? 'var(--hover-color)' : 'transparent',
       color: 'var(--text-color)',
       cursor: 'pointer',
       border: 'none',
-      minWidth: 0
+      minWidth: 0,
+      '&:hover': {
+        backgroundColor: 'var(--hover-color)',
+        boxShadow: 'var(--shadow-sm)'
+      }
     }),
     fileName: {
       fontWeight: 500,
@@ -48,22 +53,24 @@ const FileTree: React.FC<FileTreeProps> = ({ items, level = 0 }) => {
       minWidth: 0,
       marginRight: '1rem',
       wordBreak: 'break-all' as const,
-      color: 'var(--text-color)'
+      color: 'var(--text-color)',
+      maxWidth: 'calc(100% - 4rem)'
     },
     fileLink: (isActive: boolean) => ({
       display: 'flex',
       alignItems: 'center',
       padding: '0.5rem 0.75rem',
       borderRadius: '0.5rem',
-      transition: 'all 0.2s',
+      transition: 'all 0.2s ease-in-out',
       backgroundColor: isActive ? 'var(--hover-color)' : 'transparent',
       color: isActive ? 'var(--link-color)' : 'var(--text-color)',
       textDecoration: 'none',
       position: 'relative' as const,
-      boxShadow: isActive ? 'inset 0 0 0 1px var(--link-color)' : 'none',
+      boxShadow: isActive ? 'var(--shadow-sm)' : 'none',
       '&:hover': {
         backgroundColor: 'var(--hover-color)',
-        color: 'var(--link-color)'
+        color: 'var(--link-color)',
+        boxShadow: 'var(--shadow-sm)'
       },
       width: '100%',
       minWidth: 0,
@@ -76,13 +83,19 @@ const FileTree: React.FC<FileTreeProps> = ({ items, level = 0 }) => {
       display: 'flex',
       alignItems: 'center',
       width: '20px',
-      color: 'var(--text-color)'
+      color: 'var(--text-color)',
+      backgroundColor: 'var(--hover-color)',
+      padding: '0.25rem',
+      borderRadius: '0.375rem'
     },
     folderIcon: {
       marginRight: '0.5rem',
       flexShrink: 0,
       color: 'var(--link-color)',
-      width: '20px'
+      width: '20px',
+      backgroundColor: 'var(--hover-color)',
+      padding: '0.25rem',
+      borderRadius: '0.375rem'
     },
     chevronIcon: {
       marginRight: '0.5rem',
@@ -92,7 +105,8 @@ const FileTree: React.FC<FileTreeProps> = ({ items, level = 0 }) => {
       height: '16px',
       display: 'flex',
       alignItems: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      opacity: 0.7
     },
     subTree: {
       marginLeft: '1.5rem',
@@ -106,14 +120,16 @@ const FileTree: React.FC<FileTreeProps> = ({ items, level = 0 }) => {
       width: '0.375rem',
       height: '0.375rem',
       backgroundColor: 'var(--link-color)',
-      borderRadius: '9999px'
+      borderRadius: '9999px',
+      boxShadow: 'var(--shadow-sm)'
     },
     fileNameContainer: {
       display: 'flex',
       alignItems: 'center',
       minWidth: 0,
       flex: 1,
-      overflow: 'hidden'
+      overflow: 'hidden',
+      maxWidth: 'calc(100% - 3rem)'
     }
   };
 
