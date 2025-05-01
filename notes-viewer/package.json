@@ -10,7 +10,7 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "predeploy": "npm run build",
-  "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "framer-motion": "^12.9.2",
@@ -26,6 +26,7 @@
   "devDependencies": {
     "@eslint/js": "^9.22.0",
     "@tailwindcss/typography": "^0.5.16",
+    "@types/node": "^22.15.3",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@types/react-syntax-highlighter": "^15.5.13",

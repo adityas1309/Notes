@@ -34,7 +34,7 @@ const directoryListingPlugin = {
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/notes/',
+  base: process.env.NODE_ENV === 'production' ? '/notes/' : '/notes-viewer/',
   plugins: [react(), directoryListingPlugin],
   server: {
     fs: {

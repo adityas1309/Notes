@@ -227,9 +227,9 @@ const MarkdownViewer: React.FC = () => {
       try {
         setIsLoading(true);
         // For GitHub Pages deployment, we need to include the repository name in the path
-        const baseUrl = window.location.hostname.includes('github.io') 
+        const baseUrl = process.env.NODE_ENV === 'production'
           ? '/notes'  // GitHub Pages deployment
-          : '';       // Local development
+          : '/notes-viewer';  // Local development with Vite
         
         // Ensure the filePath starts with the correct base path
         const normalizedFilePath = filePath.startsWith('/') ? filePath.slice(1) : filePath;
