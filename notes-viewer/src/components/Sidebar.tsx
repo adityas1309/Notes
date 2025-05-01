@@ -51,7 +51,7 @@ const Sidebar: React.FC<SidebarProps> = ({
       padding: '0.5rem'
     },
     sidebarHeader: {
-      padding: '1rem',
+      padding: '1.5rem',
       borderBottom: '1px solid var(--border-color)',
       backgroundColor: 'var(--bg-color)',
       position: 'sticky' as const,
@@ -61,15 +61,33 @@ const Sidebar: React.FC<SidebarProps> = ({
     headerTitle: {
       display: 'flex',
       alignItems: 'center',
-      gap: '0.5rem',
-      marginBottom: '1rem',
+      gap: '0.75rem',
+      marginBottom: '1.25rem',
+      color: 'var(--text-color)'
+    },
+    headerIcon: {
+      color: 'var(--link-color)',
+      fontSize: '1.5rem',
+      backgroundColor: 'var(--hover-color)',
+      padding: '0.5rem',
+      borderRadius: '0.5rem',
+      width: '2.5rem',
+      height: '2.5rem',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    },
+    headerText: {
+      fontSize: '1.25rem',
+      fontWeight: 600,
+      margin: 0,
       color: 'var(--text-color)'
     },
     headerControls: {
       display: 'flex',
-      justifyContent: 'space-between',
+      justifyContent: 'flex-end',
       alignItems: 'center',
-      gap: '0.5rem'
+      gap: '0.75rem'
     },
     iconButton: {
       background: 'none',
@@ -77,7 +95,7 @@ const Sidebar: React.FC<SidebarProps> = ({
       color: 'var(--text-color)',
       cursor: 'pointer',
       padding: '0.5rem',
-      borderRadius: '0.375rem',
+      borderRadius: '0.5rem',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -88,18 +106,18 @@ const Sidebar: React.FC<SidebarProps> = ({
       }
     },
     navigation: {
-      padding: '1rem',
+      padding: '1.5rem',
       borderBottom: '1px solid var(--border-color)',
       backgroundColor: 'var(--bg-color)',
       position: 'sticky' as const,
-      top: '4.5rem',
+      top: '5.5rem',
       zIndex: 1
     },
     navLink: (isActive: boolean) => ({
       display: 'flex',
       alignItems: 'center',
       gap: '0.75rem',
-      padding: '0.75rem',
+      padding: '0.75rem 1rem',
       borderRadius: '0.5rem',
       color: isActive ? 'var(--link-color)' : 'var(--text-color)',
       textDecoration: 'none',
@@ -114,13 +132,17 @@ const Sidebar: React.FC<SidebarProps> = ({
     navIcon: {
       color: 'inherit',
       flexShrink: 0,
-      width: '20px',
-      height: '20px'
+      width: '1.25rem',
+      height: '1.25rem'
+    },
+    navText: {
+      fontSize: '0.95rem',
+      fontWeight: 500
     },
     fileTreeContainer: {
       flex: 1,
       overflow: 'auto',
-      padding: '0.5rem',
+      padding: '1rem',
       '&::-webkit-scrollbar': {
         width: '6px'
       },
@@ -188,13 +210,8 @@ const Sidebar: React.FC<SidebarProps> = ({
           <div style={styles.sidebarContent}>
             <div style={styles.sidebarHeader}>
               <div style={styles.headerTitle}>
-                <FiFolder size={20} />
-                <h2 style={{ 
-                  fontWeight: 'bold',
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                  whiteSpace: 'nowrap'
-                }}>My notes</h2>
+                <FiFolder style={styles.headerIcon} />
+                <h2 style={styles.headerText}>My Notes</h2>
               </div>
               <div style={styles.headerControls}>
                 <button
@@ -205,8 +222,8 @@ const Sidebar: React.FC<SidebarProps> = ({
                   <FiRefreshCw
                     style={{ 
                       animation: isRefreshing ? 'spin 1s linear infinite' : 'none',
-                      width: '16px',
-                      height: '16px'
+                      width: '1.25rem',
+                      height: '1.25rem'
                     }}
                   />
                 </button>
@@ -214,7 +231,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                   style={styles.iconButton} 
                   title="Settings"
                 >
-                  <FiSettings size={16} />
+                  <FiSettings style={{ width: '1.25rem', height: '1.25rem' }} />
                 </button>
               </div>
             </div>
@@ -225,14 +242,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                 style={styles.navLink(location.pathname === '/')}
               >
                 <FiHome style={styles.navIcon} />
-                <span>Home</span>
-              </Link>
-              <Link
-                to="/dashboard"
-                style={styles.navLink(location.pathname === '/dashboard')}
-              >
-                <FiBarChart2 style={styles.navIcon} />
-                <span>Dashboard</span>
+                <span style={styles.navText}>Dashboard</span>
               </Link>
             </div>
 
@@ -249,10 +259,10 @@ const Sidebar: React.FC<SidebarProps> = ({
               ) : fileStructure.length === 0 ? (
                 <div style={styles.emptyState}>
                   <div style={styles.emptyStateIcon}>
-                    <FiFolder style={{ color: '#64748b' }} size={24} />
+                    <FiFolder style={{ color: 'var(--text-color)', opacity: 0.7 }} size={24} />
                   </div>
-                  <h3 style={{ color: '#e2e8f0', fontWeight: 500 }}>No notes available</h3>
-                  <p style={{ color: '#64748b', fontSize: '0.875rem' }}>
+                  <h3 style={{ color: 'var(--text-color)', fontWeight: 500 }}>No notes available</h3>
+                  <p style={{ color: 'var(--text-color)', opacity: 0.7, fontSize: '0.875rem' }}>
                     Add notes to populate your workspace.
                   </p>
                 </div>
