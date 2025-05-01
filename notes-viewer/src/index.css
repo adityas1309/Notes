@@ -142,7 +142,7 @@ button:focus-visible {
 
 .markdown-content h1 {
   @apply text-3xl font-bold mb-4;
-}
+  }
 
 .markdown-content h2 {
   @apply text-2xl font-semibold mb-3;
@@ -162,7 +162,7 @@ button:focus-visible {
 
 .markdown-content pre {
   @apply bg-gray-100 p-4 rounded-lg mb-4 overflow-x-auto;
-}
+  }
 
 .markdown-content ul {
   @apply list-disc pl-6 mb-4;

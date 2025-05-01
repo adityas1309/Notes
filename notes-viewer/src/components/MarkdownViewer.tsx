@@ -331,8 +331,15 @@ const MarkdownViewer: React.FC = () => {
         const baseUrl = window.location.hostname.includes('github.io') 
           ? '/notes'  // GitHub Pages deployment
           : '';       // Local development
-        const response = await fetch(`${baseUrl}/${filePath}`);
-        if (!response.ok) throw new Error('Failed to load file');
+        
+        // Ensure the filePath starts with the correct base path
+        const normalizedFilePath = filePath.startsWith('/') ? filePath.slice(1) : filePath;
+        const response = await fetch(`${baseUrl}/${normalizedFilePath}`);
+        
+        if (!response.ok) {
+          console.error(`Failed to load file: ${baseUrl}/${normalizedFilePath}`);
+          throw new Error('Failed to load file');
+        }
         
         const text = await response.text();
         // Check if the content is actually markdown
