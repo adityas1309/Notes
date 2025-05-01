@@ -117,8 +117,8 @@ const MarkdownViewer: React.FC = () => {
     },
     table: {
       width: '100%',
-      borderCollapse: 'collapse',
-      margin: '1.5rem 0',
+      borderCollapse: 'collapse' as const,
+      margin: '1rem 0'
     },
     tableHeader: {
       padding: '0.75rem',
