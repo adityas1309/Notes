@@ -32,8 +32,8 @@ const FileTree: React.FC<FileTreeProps> = ({ items, level = 0 }) => {
       padding: '0.5rem 0.75rem',
       borderRadius: '0.5rem',
       transition: 'all 0.2s',
-      backgroundColor: isExpanded ? 'rgba(55, 65, 81, 0.5)' : 'transparent',
-      color: isExpanded ? '#f1f5f9' : '#e2e8f0',
+      backgroundColor: isExpanded ? 'var(--hover-color)' : 'transparent',
+      color: 'var(--text-color)',
       cursor: 'pointer',
       border: 'none',
       minWidth: 0
@@ -47,7 +47,8 @@ const FileTree: React.FC<FileTreeProps> = ({ items, level = 0 }) => {
       flex: '1 1 auto',
       minWidth: 0,
       marginRight: '1rem',
-      wordBreak: 'break-all' as const
+      wordBreak: 'break-all' as const,
+      color: 'var(--text-color)'
     },
     fileLink: (isActive: boolean) => ({
       display: 'flex',
@@ -55,14 +56,14 @@ const FileTree: React.FC<FileTreeProps> = ({ items, level = 0 }) => {
       padding: '0.5rem 0.75rem',
       borderRadius: '0.5rem',
       transition: 'all 0.2s',
-      backgroundColor: isActive ? 'rgba(30, 58, 138, 0.3)' : 'transparent',
-      color: isActive ? '#60a5fa' : '#d1d5db',
+      backgroundColor: isActive ? 'var(--hover-color)' : 'transparent',
+      color: isActive ? 'var(--link-color)' : 'var(--text-color)',
       textDecoration: 'none',
       position: 'relative' as const,
-      boxShadow: isActive ? 'inset 0 0 0 1px rgba(96,165,250,0.3)' : 'none',
+      boxShadow: isActive ? 'inset 0 0 0 1px var(--link-color)' : 'none',
       '&:hover': {
-        backgroundColor: 'rgba(30, 58, 138, 0.1)',
-        color: '#60a5fa'
+        backgroundColor: 'var(--hover-color)',
+        color: 'var(--link-color)'
       },
       width: '100%',
       minWidth: 0,
@@ -74,18 +75,19 @@ const FileTree: React.FC<FileTreeProps> = ({ items, level = 0 }) => {
       flexShrink: 0,
       display: 'flex',
       alignItems: 'center',
-      width: '20px'
+      width: '20px',
+      color: 'var(--text-color)'
     },
     folderIcon: {
       marginRight: '0.5rem',
       flexShrink: 0,
-      color: '#facc15',
+      color: 'var(--link-color)',
       width: '20px'
     },
     chevronIcon: {
       marginRight: '0.5rem',
       flexShrink: 0,
-      color: '#94a3b8',
+      color: 'var(--text-color)',
       width: '16px',
       height: '16px',
       display: 'flex',
@@ -95,7 +97,7 @@ const FileTree: React.FC<FileTreeProps> = ({ items, level = 0 }) => {
     subTree: {
       marginLeft: '1.5rem',
       paddingLeft: '0.5rem',
-      borderLeft: '2px solid rgba(55, 65, 81, 0.5)',
+      borderLeft: '2px solid var(--border-color)',
       width: 'calc(100% - 1.5rem)'
     },
     activeIndicator: {
@@ -103,7 +105,7 @@ const FileTree: React.FC<FileTreeProps> = ({ items, level = 0 }) => {
       right: '0.75rem',
       width: '0.375rem',
       height: '0.375rem',
-      backgroundColor: '#60a5fa',
+      backgroundColor: 'var(--link-color)',
       borderRadius: '9999px'
     },
     fileNameContainer: {
@@ -124,9 +126,9 @@ const FileTree: React.FC<FileTreeProps> = ({ items, level = 0 }) => {
 
   const getFileIcon = (fileName: string) => {
     if (fileName.endsWith('.md') || fileName.endsWith('.markdown')) {
-      return <FiFileText style={{ color: '#60a5fa', fontSize: '1.2em' }} />;
+      return <FiFileText style={{ color: 'var(--link-color)', fontSize: '1.2em' }} />;
     }
-    return <FiFile style={{ color: '#94a3b8' }} />;
+    return <FiFile style={{ color: 'var(--text-color)' }} />;
   };
 
   return (

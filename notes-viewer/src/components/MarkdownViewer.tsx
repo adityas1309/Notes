@@ -39,246 +39,145 @@ const MarkdownViewer: React.FC = () => {
       display: 'flex',
       flexDirection: 'column' as const,
       height: '100%',
-      backgroundColor: '#1a1f2e',
-      color: '#f1f5f9'
+      backgroundColor: 'var(--bg-color)',
+      color: 'var(--text-color)',
     },
     header: {
-      padding: '1.5rem 2rem',
-      borderBottom: '1px solid rgba(30, 41, 59, 0.5)',
-      backgroundColor: '#1a1f2e'
+      padding: '1rem',
+      borderBottom: '1px solid var(--border-color)',
+      backgroundColor: 'var(--bg-color)',
     },
     headerContent: {
       display: 'flex',
       alignItems: 'center',
-      gap: '1rem'
+      gap: '1rem',
     },
     fileIcon: {
-      color: '#60a5fa',
-      flexShrink: 0
+      color: 'var(--text-color)',
     },
     titleContainer: {
       flex: 1,
-      minWidth: 0
     },
     title: {
-      fontSize: '1.5rem',
-      fontWeight: 600,
-      color: '#f1f5f9',
       margin: 0,
-      overflow: 'hidden',
-      textOverflow: 'ellipsis',
-      whiteSpace: 'nowrap' as const
+      fontSize: '1.25rem',
+      fontWeight: 600,
+      color: 'var(--text-color)',
     },
     metadata: {
       display: 'flex',
-      alignItems: 'center',
-      gap: '1.5rem',
+      gap: '1rem',
       marginTop: '0.5rem',
-      color: '#94a3b8',
-      fontSize: '0.875rem'
+      fontSize: '0.875rem',
+      color: 'var(--text-color)',
     },
     metaItem: {
       display: 'flex',
       alignItems: 'center',
-      gap: '0.5rem'
+      gap: '0.5rem',
     },
     content: {
       flex: 1,
       padding: '2rem',
       overflowY: 'auto' as const,
-      overflowX: 'hidden' as const,
-      lineHeight: 1.7,
-      '& h1, & h2, & h3, & h4, & h5, & h6': {
-        color: '#f1f5f9',
-        marginTop: '2rem',
-        marginBottom: '1rem',
-        position: 'relative' as const,
-        scrollMarginTop: '100px'
-      },
-      '& h1': {
-        fontSize: '2rem',
-        borderBottom: '1px solid rgba(30, 41, 59, 0.5)',
-        paddingBottom: '0.5rem'
-      },
-      '& h2': { fontSize: '1.75rem' },
-      '& h3': { fontSize: '1.5rem' },
-      '& h4': { fontSize: '1.25rem' },
-      '& p': {
-        marginBottom: '1.5rem',
-        color: '#e2e8f0'
-      },
-      '& a': {
-        color: '#60a5fa',
-        textDecoration: 'none',
-        transition: 'color 0.2s',
-        '&:hover': {
-          color: '#93c5fd'
-        }
-      },
-      '& ul, & ol': {
-        paddingLeft: '1.5rem',
-        marginBottom: '1.5rem',
-        color: '#e2e8f0'
-      },
-      '& li': {
-        marginBottom: '0.5rem'
-      },
-      '& code': {
-        backgroundColor: 'rgba(30, 41, 59, 0.5)',
-        padding: '0.2em 0.4em',
-        borderRadius: '0.375rem',
-        fontSize: '0.875em',
-        color: '#60a5fa'
-      },
-      '& pre': {
-        margin: '1.5rem 0',
-        padding: '1rem',
-        borderRadius: '0.5rem',
-        backgroundColor: '#1e293b',
-        overflow: 'auto'
-      },
-      '& blockquote': {
-        borderLeft: '4px solid #60a5fa',
-        paddingLeft: '1rem',
-        marginLeft: 0,
-        marginRight: 0,
-        marginBottom: '1.5rem',
-        color: '#94a3b8',
-        fontStyle: 'italic'
-      },
-      '& table': {
-        width: '100%',
-        marginBottom: '1.5rem',
-        borderCollapse: 'collapse' as const
-      },
-      '& th, & td': {
-        padding: '0.75rem',
-        borderBottom: '1px solid rgba(30, 41, 59, 0.5)',
-        textAlign: 'left' as const
-      },
-      '& th': {
-        backgroundColor: 'rgba(30, 41, 59, 0.5)',
-        color: '#f1f5f9',
-        fontWeight: 600
-      },
-      '& img': {
-        maxWidth: '100%',
-        height: 'auto',
-        borderRadius: '0.5rem',
-        marginBottom: '1.5rem'
-      },
-      '& hr': {
-        border: 'none',
-        borderTop: '1px solid rgba(30, 41, 59, 0.5)',
-        margin: '2rem 0'
-      }
+      backgroundColor: 'var(--bg-color)',
     },
-    errorContainer: {
-      display: 'flex',
-      flexDirection: 'column' as const,
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: '4rem 2rem',
-      textAlign: 'center' as const
+    heading1: {
+      fontSize: '2.5rem',
+      fontWeight: 700,
+      margin: '2rem 0 1.5rem',
+      color: 'var(--text-color)',
     },
-    errorIcon: {
-      color: '#ef4444',
-      marginBottom: '1rem'
+    heading2: {
+      fontSize: '2rem',
+      fontWeight: 600,
+      margin: '2rem 0 1.25rem',
+      color: 'var(--text-color)',
     },
-    errorMessage: {
-      color: '#f1f5f9',
-      fontSize: '1.25rem',
-      marginBottom: '0.5rem'
+    heading3: {
+      fontSize: '1.5rem',
+      fontWeight: 600,
+      margin: '1.5rem 0 1rem',
+      color: 'var(--text-color)',
     },
-    errorDetail: {
-      color: '#94a3b8',
-      fontSize: '0.875rem'
+    link: {
+      color: 'var(--link-color)',
+      textDecoration: 'none',
+      '&:hover': {
+        color: 'var(--link-hover)',
+        textDecoration: 'underline',
+      },
+    },
+    blockquote: {
+      borderLeft: '4px solid var(--border-color)',
+      margin: '1.5rem 0',
+      padding: '0.5rem 1rem',
+      backgroundColor: 'var(--hover-color)',
+      color: 'var(--text-color)',
+    },
+    table: {
+      width: '100%',
+      borderCollapse: 'collapse',
+      margin: '1.5rem 0',
+    },
+    tableHeader: {
+      padding: '0.75rem',
+      borderBottom: '2px solid var(--border-color)',
+      backgroundColor: 'var(--hover-color)',
+      color: 'var(--text-color)',
+    },
+    tableCell: {
+      padding: '0.75rem',
+      borderBottom: '1px solid var(--border-color)',
+      color: 'var(--text-color)',
+    },
+    image: {
+      maxWidth: '100%',
+      height: 'auto',
+      margin: '1.5rem 0',
     },
     loadingContainer: {
       display: 'flex',
       flexDirection: 'column' as const,
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '4rem 2rem'
+      height: '100%',
+      backgroundColor: 'var(--bg-color)',
     },
     loadingSpinner: {
       width: '3rem',
       height: '3rem',
-      border: '4px solid rgba(96, 165, 250, 0.1)',
-      borderTopColor: '#60a5fa',
+      border: '4px solid var(--border-color)',
+      borderTop: '4px solid var(--link-color)',
       borderRadius: '50%',
-      animation: 'spin 1s linear infinite'
+      animation: 'spin 1s linear infinite',
     },
     loadingText: {
       marginTop: '1rem',
-      color: '#94a3b8',
-      fontSize: '0.875rem'
+      color: 'var(--text-color)',
     },
-    heading1: {
-      fontSize: '2rem',
-      fontWeight: 600,
-      marginTop: '2rem',
+    errorContainer: {
+      display: 'flex',
+      flexDirection: 'column' as const,
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: '100%',
+      padding: '2rem',
+      backgroundColor: 'var(--bg-color)',
+    },
+    errorIcon: {
+      color: 'var(--text-color)',
       marginBottom: '1rem',
-      color: '#f1f5f9',
-      scrollMarginTop: '100px'
     },
-    heading2: {
-      fontSize: '1.75rem',
-      fontWeight: 600,
-      marginTop: '1.75rem',
-      marginBottom: '0.75rem',
-      color: '#f1f5f9',
-      scrollMarginTop: '100px'
+    errorMessage: {
+      margin: '0.5rem 0',
+      color: 'var(--text-color)',
     },
-    heading3: {
-      fontSize: '1.5rem',
-      fontWeight: 600,
-      marginTop: '1.5rem',
-      marginBottom: '0.5rem',
-      color: '#f1f5f9',
-      scrollMarginTop: '100px'
+    errorDetail: {
+      margin: 0,
+      color: 'var(--text-color)',
+      textAlign: 'center' as const,
     },
-    link: {
-      color: '#60a5fa',
-      textDecoration: 'none',
-      transition: 'color 0.2s',
-      '&:hover': {
-        color: '#93c5fd'
-      }
-    },
-    blockquote: {
-      borderLeft: '4px solid #60a5fa',
-      paddingLeft: '1rem',
-      marginLeft: 0,
-      marginRight: 0,
-      marginBottom: '1.5rem',
-      color: '#94a3b8',
-      fontStyle: 'italic'
-    },
-    table: {
-      width: '100%',
-      marginBottom: '1.5rem',
-      borderCollapse: 'collapse' as const
-    },
-    tableHeader: {
-      backgroundColor: 'rgba(30, 41, 59, 0.5)',
-      color: '#f1f5f9',
-      fontWeight: 600,
-      padding: '0.75rem',
-      borderBottom: '1px solid rgba(30, 41, 59, 0.5)',
-      textAlign: 'left' as const
-    },
-    tableCell: {
-      padding: '0.75rem',
-      borderBottom: '1px solid rgba(30, 41, 59, 0.5)',
-      textAlign: 'left' as const
-    },
-    image: {
-      maxWidth: '100%',
-      height: 'auto',
-      borderRadius: '0.5rem',
-      marginBottom: '1.5rem'
-    }
   };
 
   // Function to convert heading text to ID
@@ -462,7 +361,7 @@ const MarkdownViewer: React.FC = () => {
                   {String(children).replace(/\n$/, '')}
                 </SyntaxHighlighter>
               ) : (
-                <code className={className} style={{ backgroundColor: 'rgba(30, 41, 59, 0.5)', padding: '0.2em 0.4em', borderRadius: '0.375rem', fontSize: '0.875em', color: '#60a5fa' }}>
+                <code className={className} style={{ backgroundColor: 'var(--code-bg)', padding: '0.2em 0.4em', borderRadius: '0.375rem', fontSize: '0.875em', color: 'var(--code-text)' }}>
                   {children}
                 </code>
               );
@@ -499,11 +398,11 @@ const MarkdownViewer: React.FC = () => {
             th: ({node, ...props}) => <th style={styles.tableHeader} {...props} />,
             td: ({node, ...props}) => <td style={styles.tableCell} {...props} />,
             img: ({node, ...props}) => <img style={styles.image} {...props} />,
-            p: ({node, ...props}) => <p style={{ marginBottom: '1.5rem', color: '#e2e8f0' }} {...props} />,
-            ul: ({node, ...props}) => <ul style={{ paddingLeft: '1.5rem', marginBottom: '1.5rem', color: '#e2e8f0' }} {...props} />,
-            ol: ({node, ...props}) => <ol style={{ paddingLeft: '1.5rem', marginBottom: '1.5rem', color: '#e2e8f0' }} {...props} />,
+            p: ({node, ...props}) => <p style={{ marginBottom: '1.5rem', color: 'var(--text-color)' }} {...props} />,
+            ul: ({node, ...props}) => <ul style={{ paddingLeft: '1.5rem', marginBottom: '1.5rem', color: 'var(--text-color)' }} {...props} />,
+            ol: ({node, ...props}) => <ol style={{ paddingLeft: '1.5rem', marginBottom: '1.5rem', color: 'var(--text-color)' }} {...props} />,
             li: ({node, ...props}) => <li style={{ marginBottom: '0.5rem' }} {...props} />,
-            hr: ({node, ...props}) => <hr style={{ border: 'none', borderTop: '1px solid rgba(30, 41, 59, 0.5)', margin: '2rem 0' }} {...props} />
+            hr: ({node, ...props}) => <hr style={{ border: 'none', borderTop: '1px solid var(--border-color)', margin: '2rem 0' }} {...props} />
           }}
         >
           {content}

@@ -43,200 +43,173 @@ const Layout: React.FC = () => {
 
   const styles = {
     container: {
-      minHeight: '100vh',
-      backgroundColor: '#1a1f2e',
-      color: '#f1f5f9',
       display: 'flex',
-      flexDirection: 'column' as const
+      flexDirection: 'column' as const,
+      minHeight: '100vh',
+      backgroundColor: 'var(--bg-color)',
+      position: 'relative' as const,
     },
     mobileHeader: {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
       padding: '1rem',
-      backgroundColor: '#1a1f2e',
-      borderBottom: '1px solid rgba(30, 41, 59, 0.5)',
-      zIndex: 30
+      backgroundColor: 'var(--bg-color)',
+      borderBottom: '1px solid var(--border-color)',
+      position: 'fixed' as const,
+      top: 0,
+      left: 0,
+      right: 0,
+      zIndex: 100,
     },
     menuButton: {
+      background: 'none',
+      border: 'none',
+      color: 'var(--text-color)',
+      cursor: 'pointer',
       padding: '0.5rem',
       borderRadius: '0.375rem',
-      transition: 'background-color 0.2s',
-      cursor: 'pointer',
-      backgroundColor: 'transparent',
-      border: 'none',
-      color: '#f1f5f9'
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      '&:hover': {
+        backgroundColor: 'var(--hover-color)',
+      },
     },
     title: {
-      fontSize: '1.125rem',
-      fontWeight: 'bold',
-      background: 'linear-gradient(to right, #60a5fa, #22d3ee)',
-      WebkitBackgroundClip: 'text',
-      WebkitTextFillColor: 'transparent'
+      margin: 0,
+      fontSize: '1.25rem',
+      fontWeight: 600,
+      color: 'var(--text-color)',
     },
     mainContainer: {
       display: 'flex',
       flex: 1,
-      height: 'calc(100vh - 4rem)',
-      backgroundColor: '#1a1f2e',
-      position: 'relative' as const,
-      overflow: 'hidden'
+      overflow: 'hidden',
+      marginTop: '4rem', // Add margin for fixed header
     },
     sidebar: {
       position: 'fixed' as const,
-      width: '320px',
-      height: 'calc(100vh - 4rem)',
-      backgroundColor: '#1a1f2e',
-      borderRight: '1px solid rgba(30, 41, 59, 0.5)',
-      overflowY: 'auto' as const,
-      overflowX: 'hidden' as const,
-      zIndex: 20,
       top: '4rem',
       left: 0,
-      boxSizing: 'border-box' as const
-    },
-    sidebarContent: {
+      width: '280px',
+      height: 'calc(100vh - 4rem)',
+      backgroundColor: 'var(--bg-color)',
+      borderRight: '1px solid var(--border-color)',
       display: 'flex',
       flexDirection: 'column' as const,
-      height: '100%',
+      zIndex: 90,
+      transform: sidebarOpen ? 'translateX(0)' : 'translateX(-100%)',
+      transition: 'transform 0.3s ease-in-out',
+    },
+    sidebarContent: {
+      flex: 1,
+      display: 'flex',
+      flexDirection: 'column' as const,
+      overflow: 'hidden',
       padding: '1rem',
-      width: '100%',
-      boxSizing: 'border-box' as const
     },
     sidebarHeader: {
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      marginBottom: '1rem',
-      width: '100%',
-      minHeight: '40px'
+      padding: '1rem',
+      borderBottom: '1px solid var(--border-color)',
     },
     headerTitle: {
       display: 'flex',
       alignItems: 'center',
-      gap: '0.75rem',
-      color: '#f1f5f9',
-      overflow: 'hidden',
-      flex: '1 1 auto'
+      gap: '0.5rem',
+      marginBottom: '1rem',
     },
     headerControls: {
       display: 'flex',
-      gap: '0.75rem',
-      flexShrink: 0
+      justifyContent: 'space-between',
+      alignItems: 'center',
     },
     iconButton: {
+      background: 'none',
+      border: 'none',
+      color: 'var(--text-color)',
+      cursor: 'pointer',
       padding: '0.5rem',
       borderRadius: '0.375rem',
-      backgroundColor: 'transparent',
-      border: 'none',
-      color: '#94a3b8',
-      cursor: 'pointer',
-      transition: 'all 0.2s',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      width: '32px',
-      height: '32px',
-      flexShrink: 0
+      '&:hover': {
+        backgroundColor: 'var(--hover-color)',
+      },
+    },
+    navigation: {
+      padding: '1rem',
+      borderBottom: '1px solid var(--border-color)',
+    },
+    navLink: (isActive: boolean) => ({
+      display: 'flex',
+      alignItems: 'center',
+      gap: '0.75rem',
+      padding: '0.75rem',
+      borderRadius: '0.375rem',
+      color: 'var(--text-color)',
+      textDecoration: 'none',
+      backgroundColor: isActive ? 'var(--hover-color)' : 'transparent',
+      '&:hover': {
+        backgroundColor: 'var(--hover-color)',
+      },
+    }),
+    navIcon: {
+      color: 'var(--text-color)',
     },
     fileTreeContainer: {
-      display: 'flex',
-      flexDirection: 'column' as const,
-      gap: '0.75rem',
-      overflowY: 'auto' as const,
-      overflowX: 'hidden' as const,
       flex: 1,
-      width: '100%',
-      maxWidth: '100%',
-      boxSizing: 'border-box' as const
+      overflow: 'auto',
+      padding: '1rem',
     },
     loadingContainer: {
       display: 'flex',
       flexDirection: 'column' as const,
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '3rem 0'
+      padding: '2rem',
     },
     loadingSpinner: {
-      height: '2.5rem',
-      width: '2.5rem',
-      borderRadius: '9999px',
-      border: '4px solid rgba(34, 211, 238, 0.3)',
-      borderTopColor: '#22d3ee'
+      width: '2rem',
+      height: '2rem',
+      border: '3px solid var(--border-color)',
+      borderTop: '3px solid var(--link-color)',
+      borderRadius: '50%',
+      animation: 'spin 1s linear infinite',
     },
     loadingText: {
       marginTop: '1rem',
-      color: '#94a3b8'
+      color: 'var(--text-color)',
     },
     emptyState: {
-      textAlign: 'center' as const,
-      padding: '3rem 0'
-    },
-    emptyStateIcon: {
-      width: '4rem',
-      height: '4rem',
-      backgroundColor: '#1e293b',
-      borderRadius: '9999px',
       display: 'flex',
+      flexDirection: 'column' as const,
       alignItems: 'center',
       justifyContent: 'center',
-      margin: '0 auto 0.75rem auto'
+      padding: '2rem',
+      textAlign: 'center' as const,
+    },
+    emptyStateIcon: {
+      marginBottom: '1rem',
     },
     mainContent: {
       flex: 1,
-      marginLeft: sidebarOpen ? '320px' : '0',
-      transition: 'margin-left 0.15s ease-in-out',
-      backgroundColor: '#1a1f2e',
-      minHeight: '100%',
-      display: 'flex',
-      flexDirection: 'column' as const,
-      overflow: 'auto'
+      overflow: 'auto',
+      backgroundColor: 'var(--bg-color)',
+      marginLeft: sidebarOpen ? '280px' : '0',
+      transition: 'margin-left 0.3s ease-in-out',
     },
-    contentHeader: {
-      borderBottom: '1px solid rgba(30, 41, 59, 0.5)',
-      padding: '1rem',
-      backgroundColor: '#1a1f2e'
+    overlay: {
+      position: 'fixed' as const,
+      top: '4rem',
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      zIndex: 80,
+      display: sidebarOpen ? 'block' : 'none',
     },
-    contentTitle: {
-      fontSize: '1.25rem',
-      fontWeight: 600,
-      color: '#f1f5f9'
-    },
-    content: {
-      flex: 1,
-      padding: '1rem',
-      backgroundColor: '#1a1f2e',
-      overflowY: 'auto' as const
-    },
-    navigation: {
-      display: 'flex',
-      flexDirection: 'column' as const,
-      gap: '0.75rem',
-      marginBottom: '1rem',
-      width: '100%'
-    },
-    navLink: (isActive: boolean) => ({
-      display: 'flex',
-      alignItems: 'center',
-      gap: '0.75rem',
-      padding: '0.75rem 1rem',
-      borderRadius: '0.5rem',
-      color: isActive ? '#60a5fa' : '#94a3b8',
-      textDecoration: 'none',
-      backgroundColor: isActive ? 'rgba(30, 58, 138, 0.3)' : 'transparent',
-      transition: 'all 0.2s',
-      whiteSpace: 'nowrap' as const,
-      overflow: 'hidden',
-      textOverflow: 'ellipsis',
-      width: '100%',
-      '&:hover': {
-        backgroundColor: 'rgba(30, 58, 138, 0.1)',
-        color: '#60a5fa'
-      }
-    }),
-    navIcon: {
-      fontSize: '1.25rem'
-    }
   };
 
   return (
@@ -352,12 +325,7 @@ const Layout: React.FC = () => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.15 }}
-                style={{
-                  position: 'fixed',
-                  inset: 0,
-                  backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                  zIndex: 10
-                }}
+                style={styles.overlay}
                 onClick={() => setSidebarOpen(false)}
               />
             </>

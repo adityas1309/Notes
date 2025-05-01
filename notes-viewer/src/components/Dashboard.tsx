@@ -43,9 +43,9 @@ const Dashboard: React.FC = () => {
   const styles = {
     container: {
       padding: '2rem',
-      backgroundColor: '#1a1f2e',
+      backgroundColor: 'var(--bg-color)',
       borderRadius: '0.5rem',
-      color: '#f1f5f9'
+      color: 'var(--text-color)'
     },
     header: {
       display: 'flex',
@@ -54,12 +54,13 @@ const Dashboard: React.FC = () => {
       marginBottom: '2rem'
     },
     headerIcon: {
-      color: '#60a5fa',
+      color: 'var(--link-color)',
       fontSize: '1.5rem'
     },
     headerTitle: {
       fontSize: '1.5rem',
-      fontWeight: 600
+      fontWeight: 600,
+      color: 'var(--text-color)'
     },
     statsGrid: {
       display: 'grid',
@@ -68,7 +69,7 @@ const Dashboard: React.FC = () => {
       marginBottom: '2rem'
     },
     statCard: {
-      backgroundColor: 'rgba(30, 41, 59, 0.5)',
+      backgroundColor: 'var(--hover-color)',
       padding: '1.5rem',
       borderRadius: '0.5rem',
       display: 'flex',
@@ -77,15 +78,16 @@ const Dashboard: React.FC = () => {
     },
     statIcon: {
       fontSize: '1.5rem',
-      color: '#60a5fa'
+      color: 'var(--link-color)'
     },
     statValue: {
       fontSize: '2rem',
       fontWeight: 600,
-      color: '#f1f5f9'
+      color: 'var(--text-color)'
     },
     statLabel: {
-      color: '#94a3b8',
+      color: 'var(--text-color)',
+      opacity: 0.7,
       fontSize: '0.875rem'
     },
     foldersSection: {
@@ -95,7 +97,7 @@ const Dashboard: React.FC = () => {
       fontSize: '1.25rem',
       fontWeight: 600,
       marginBottom: '1rem',
-      color: '#f1f5f9'
+      color: 'var(--text-color)'
     },
     foldersList: {
       display: 'grid',
@@ -103,20 +105,21 @@ const Dashboard: React.FC = () => {
       gap: '1rem'
     },
     folderItem: {
-      backgroundColor: 'rgba(30, 41, 59, 0.5)',
+      backgroundColor: 'var(--hover-color)',
       padding: '1rem',
       borderRadius: '0.5rem',
       display: 'flex',
       alignItems: 'center',
       gap: '0.75rem',
-      color: '#f1f5f9',
+      color: 'var(--text-color)',
       transition: 'all 0.2s',
       '&:hover': {
-        backgroundColor: 'rgba(30, 41, 59, 0.7)'
+        backgroundColor: 'var(--hover-color)',
+        opacity: 0.8
       }
     },
     folderIcon: {
-      color: '#facc15'
+      color: 'var(--link-color)'
     }
   };
 
